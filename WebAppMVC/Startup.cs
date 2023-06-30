@@ -27,7 +27,7 @@ namespace WebAppMVC
         {
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BlogContext>(options=>options.UseSqlServer(connectionString));
-            services.AddSingleton<IBlogRepository, BlogRepositorycs>();
+            services.AddSingleton<IBlogRepository, BlogRepository>();
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
