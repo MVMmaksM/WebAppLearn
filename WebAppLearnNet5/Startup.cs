@@ -5,6 +5,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -27,6 +28,15 @@ namespace WebAppLearnNet5
 
             app.Use(async (context, next) =>
             {
+                string logFilePath = Path.Combine(env.ContentRootPath, "Logs", "RequestLog.txt");
+                var logsList = new List<string> { $"[{DateTime.Now}]: New request to http://{context.Request.Host.Value + context.Request.Path}" };
+                await File.AppendAllLinesAsync(logFilePath, logsList);
+
+                await next.Invoke();
+            });
+
+            app.Use(async (context, next) =>
+            {
                 Console.Out.WriteLineAsync($"[{DateTime.Now}]: New request to http://{context.Request.Host.Value + context.Request.Path}");
                 await next.Invoke();
             });
@@ -39,7 +49,7 @@ namespace WebAppLearnNet5
                     await context.Response.WriteAsync("Welcome!");
                 });
 
-                endpoints.Map("/about", async context=>
+                endpoints.Map("/about", async context =>
                 {
                     await context.Response.WriteAsync("About");
                 });
