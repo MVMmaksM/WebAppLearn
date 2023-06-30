@@ -21,6 +21,7 @@ namespace WebAppLearnNet5
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
                     webBuilder.UseStartup<Startup>();
+                    //webBuilder.UseWebRoot("View");
                 });
     }
 }

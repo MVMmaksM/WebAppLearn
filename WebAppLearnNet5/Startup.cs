@@ -20,23 +20,17 @@ namespace WebAppLearnNet5
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
         {
-            env = environment; 
+            env = environment;
 
             if (env.IsDevelopment() || env.IsStaging())
             {
                 app.UseDeveloperExceptionPage();
             }
+            app.UseStatusCodePages();
+
+            app.UseStaticFiles();
 
             app.UseRouting();
-
-            app.Use(async (context, next) =>
-            {
-                string logFilePath = Path.Combine(env.ContentRootPath, "Logs", "RequestLog.txt");
-                var logsList = new List<string> { $"[{DateTime.Now}]: New request to http://{context.Request.Host.Value + context.Request.Path}" };
-                await File.AppendAllLinesAsync(logFilePath, logsList);
-
-                await next.Invoke();
-            });
 
             app.UseMiddleware<LoggingMiddlewares>();
 
@@ -46,21 +40,17 @@ namespace WebAppLearnNet5
                 {
                     await context.Response.WriteAsync("Welcome!");
                 });
-
-                //endpoints.Map("/about", async context =>
-                //{
-                //    await context.Response.WriteAsync("About");
-                //});
-
-                //endpoints.MapGet("/config", async context =>
-                //{
-                //    await context.Response.WriteAsync($"Config");
-                //});
             });
 
             app.Map("/about", About);
             app.Map("/config", Config);
-            app.Run(async context => await context.Response.WriteAsync($"Page Not Found!"));
+            //app.Run(async context =>
+            //{
+            //    int zero = 0;
+            //    int result = 4 / zero;
+            //    await context.Response.WriteAsync($"Page Not Found!");
+            //});
+
         }
 
         private static void About(IApplicationBuilder app)
