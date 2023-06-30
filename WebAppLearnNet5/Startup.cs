@@ -8,16 +8,19 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using WebAppLearnNet5.Middlewares;
 
 namespace WebAppLearnNet5
 {
     public class Startup
     {
+        private static IWebHostEnvironment env;
         public void ConfigureServices(IServiceCollection services)
         {
         }
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment environment)
         {
+            env = environment; 
 
             if (env.IsDevelopment() || env.IsStaging())
             {
@@ -35,12 +38,7 @@ namespace WebAppLearnNet5
                 await next.Invoke();
             });
 
-            app.Use(async (context, next) =>
-            {
-                Console.Out.WriteLineAsync($"[{DateTime.Now}]: New request to http://{context.Request.Host.Value + context.Request.Path}");
-                await next.Invoke();
-            });
-
+            app.UseMiddleware<LoggingMiddlewares>();
 
             app.UseEndpoints(endpoints =>
             {
@@ -49,23 +47,23 @@ namespace WebAppLearnNet5
                     await context.Response.WriteAsync("Welcome!");
                 });
 
-                endpoints.Map("/about", async context =>
-                {
-                    await context.Response.WriteAsync("About");
-                });
+                //endpoints.Map("/about", async context =>
+                //{
+                //    await context.Response.WriteAsync("About");
+                //});
 
-                endpoints.MapGet("/config", async context =>
-                {
-                    await context.Response.WriteAsync($"Config");
-                });
+                //endpoints.MapGet("/config", async context =>
+                //{
+                //    await context.Response.WriteAsync($"Config");
+                //});
             });
 
-            //app.Map("/about", About);
-            //app.Map("/config", Config);
+            app.Map("/about", About);
+            app.Map("/config", Config);
             app.Run(async context => await context.Response.WriteAsync($"Page Not Found!"));
         }
 
-        private static void About(IApplicationBuilder app, IWebHostEnvironment env)
+        private static void About(IApplicationBuilder app)
         {
             app.Run(async context =>
             {
@@ -73,7 +71,7 @@ namespace WebAppLearnNet5
             });
         }
 
-        private static void Config(IApplicationBuilder app, IWebHostEnvironment env)
+        private static void Config(IApplicationBuilder app)
         {
             app.Run(async context =>
             {
