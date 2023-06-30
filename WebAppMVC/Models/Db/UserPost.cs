@@ -2,7 +2,7 @@
 
 namespace WebAppMVC.Models.Db
 {
-    public class UserPostcs
+    public class UserPost
     {
         public Guid Id { get; set; }
         public DateTime Date { get; set; }
