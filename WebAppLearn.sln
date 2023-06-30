@@ -7,6 +7,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppLearn", "WebAppLearn\
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppLearnNet5", "WebAppLearnNet5\WebAppLearnNet5.csproj", "{95DBE057-49C0-4BAE-A1DD-A3DDA3293EA8}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{95DBE057-49C0-4BAE-A1DD-A3DDA3293EA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{95DBE057-49C0-4BAE-A1DD-A3DDA3293EA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{95DBE057-49C0-4BAE-A1DD-A3DDA3293EA8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
