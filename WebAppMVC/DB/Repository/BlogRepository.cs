@@ -1,12 +1,13 @@
-﻿using System.Threading.Tasks;
+﻿using Microsoft.EntityFrameworkCore;
+using System.Threading.Tasks;
 using WebAppMVC.Models.Db;
 
 namespace WebAppMVC.DB.Repository
 {
-    public class BlogRepositorycs : IBlogRepository
+    public class BlogRepository : IBlogRepository
     {
         private BlogContext _blogContext;
-        public BlogRepositorycs(BlogContext context)
+        public BlogRepository(BlogContext context)
         {
             _blogContext = context;
         }
@@ -20,5 +21,8 @@ namespace WebAppMVC.DB.Repository
 
             await _blogContext.SaveChangesAsync();
         }
+
+        public async Task<User[]> GetUser()=> await _blogContext.Users.ToArrayAsync();
+        
     }
 }

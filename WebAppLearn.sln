@@ -3,11 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.6.33801.468
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppLearn", "WebAppLearn\WebAppLearn.csproj", "{390DF62B-81B4-4262-9C07-ADA2D9EC8C38}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppLearn", "WebAppLearn\WebAppLearn.csproj", "{390DF62B-81B4-4262-9C07-ADA2D9EC8C38}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppLearnNet5", "WebAppLearnNet5\WebAppLearnNet5.csproj", "{95DBE057-49C0-4BAE-A1DD-A3DDA3293EA8}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppLearnNet5", "WebAppLearnNet5\WebAppLearnNet5.csproj", "{95DBE057-49C0-4BAE-A1DD-A3DDA3293EA8}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "WebAppMVC", "WebAppMVC\WebAppMVC.csproj", "{3AEAECF4-97E3-44CE-A172-C720BDCD43A6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

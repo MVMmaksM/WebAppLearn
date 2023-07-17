@@ -11,6 +11,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using WebAppLearnNet5.Middlewares;
 using WebAppMVC.DB;
+using WebAppMVC.DB.LoggingRepository;
 using WebAppMVC.DB.Repository;
 
 namespace WebAppMVC
@@ -25,9 +26,13 @@ namespace WebAppMVC
         public IConfiguration Configuration { get; }    
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<IBlogRepository, BlogRepository>();
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BlogContext>(options=>options.UseSqlServer(connectionString));
-            services.AddSingleton<IBlogRepository, BlogRepository>();
+
+            services.AddScoped<ILoggingRepository, LoggingRepository>();
+            string loggingConnectionString = Configuration.GetConnectionString("LoggingConnectionString");
+            services.AddDbContext<LoggingContext>(options => options.UseSqlServer(loggingConnectionString));
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
