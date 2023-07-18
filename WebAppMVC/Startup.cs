@@ -30,9 +30,9 @@ namespace WebAppMVC
             string connectionString = Configuration.GetConnectionString("DefaultConnection");
             services.AddDbContext<BlogContext>(options=>options.UseSqlServer(connectionString));
 
-            services.AddScoped<ILoggingRepository, LoggingRepository>();
+            services.AddSingleton<ILoggingRepository, LoggingRepository>();
             string loggingConnectionString = Configuration.GetConnectionString("LoggingConnectionString");
-            services.AddDbContext<LoggingContext>(options => options.UseSqlServer(loggingConnectionString));
+            services.AddDbContext<LoggingContext>(options => options.UseSqlServer(loggingConnectionString), ServiceLifetime.Singleton);
             services.AddControllersWithViews();
         }
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)

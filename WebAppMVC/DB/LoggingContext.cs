@@ -6,6 +6,6 @@ namespace WebAppMVC.DB
     public class LoggingContext: DbContext
     {
         public DbSet<Request> Requests { get; set; }
-        public LoggingContext(DbContextOptions<BlogContext> options) : base(options) => Database.EnsureCreated();
+        public LoggingContext(DbContextOptions<LoggingContext> options) : base(options) => Database.EnsureCreated();
     }
 }

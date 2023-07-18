@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 using WebAppMVC.DB.LoggingRepository;
 
 namespace WebAppMVC.Controllers
@@ -11,9 +12,9 @@ namespace WebAppMVC.Controllers
         {
             _loggingRepository = loggingRepository;
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            var requests = _loggingRepository.GetRequests();
+            var requests = await _loggingRepository.GetRequests();
             return View(requests);
         }
     }
